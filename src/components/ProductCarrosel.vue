@@ -3,32 +3,32 @@
     Roupa que <span class="text-[#366C90]">respeita</span> sua luta
   </p>
 
-  <div class="mt-5 ml-10">
+  <div class="mt-5 p-2">
     <!-- Carrossel de Produtos -->
     <Swiper
       :modules="[Navigation, Pagination]"
       :slides-per-view="4"
       :space-between="1"
       :loop="true"
-      navigation
+      :navigation="{ nextEl: '.button-next', prevEl: '.button-prev' }"
       pagination
       :breakpoints="{
         320: { slidesPerView: 1 },
         640: { slidesPerView: 2 },
         1024: { slidesPerView: 4 },
-        1440: { slidesPerView: 4 },
+        1440: { slidesPerView: 5 },
       }"
-      class=""
+      class="relative"
     >
       <SwiperSlide v-for="(product, index) in products" :key="index">
-        <div class="bg-white w-72 rounded-xl p-4">
+        <div class="bg-white w-72 rounded-xl p-4 mx-auto">
           <!-- Carrossel de imagens do produto -->
           <Swiper
             :modules="[Navigation]"
             :slides-per-view="1"
             :loop="true"
-            navigation
-            class="rounded-lg mb-4"
+            :navigation="{ nextEl: '.custom-next', prevEl: '.custom-prev' }"
+            class="rounded-lg mb-4 relative"
           >
             <SwiperSlide v-for="(image, i) in product.images" :key="i">
               <img
@@ -37,6 +37,42 @@
                 class="w-full h-72 object-cover rounded-lg"
               />
             </SwiperSlide>
+            <button
+              class="custom-prev absolute z-10 top-1/2 left-1 transform -translate-y-1/2 text-white p-1 rounded-full hover:bg-[#366C90] cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-left-icon lucide-chevron-left"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              class="custom-next absolute z-10 top-1/2 right-1 transform -translate-y-1/2 text-white p-1 rounded-full hover:bg-[#366C90] cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-right-icon lucide-chevron-right"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
           </Swiper>
 
           <!-- Informações do produto -->
@@ -75,6 +111,43 @@
           </button>
         </div>
       </SwiperSlide>
+
+      <button
+        class="button-prev absolute z-10 top-1/2 left-1 transform -translate-y-1/2 text-[#366C90] bg-gray-100 shadow-md p-1 rounded-full hover:bg-gray-200 cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-left-icon lucide-chevron-left"
+        >
+          <path d="m15 18-6-6 6-6" />
+        </svg>
+      </button>
+      <button
+        class="button-next absolute z-10 top-1/2 right-1 transform -translate-y-1/2 text-[#366C90] bg-gray-100 shadow-md p-1 rounded-full hover:bg-gray-200 cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-right-icon lucide-chevron-right"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
     </Swiper>
   </div>
 </template>

@@ -26,7 +26,10 @@
       </ul>
 
       <div class="block sm:hidden">
-        <button class="text-[#366C90] p-2 cursor-pointer hover:scale-95 transition-all">
+        <button
+          v-on:click="menuNav = !menuNav"
+          class="text-[#366C90] p-2 cursor-pointer hover:scale-95 transition-all"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -44,10 +47,40 @@
             <path d="M4 19h16" />
           </svg>
         </button>
+
+        <div v-show="menuNav" class="absolute bg-gray-100 w-72 rounded-lg">
+          <ul class="p-2">
+            <li>
+              <a
+                href=""
+                class="p-1 hover:text-sm hover:text-[#366C90] hover:underline underline-offset-4 decoration-2 decoration-[#366C90] transition-all"
+                >T-Shirt</a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                class="p-1 hover:text-sm hover:text-[#366C90] hover:underline underline-offset-4 decoration-2 decoration-[#366C90] transition-all"
+                >Rashs</a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                class="p-1 hover:text-sm hover:text-[#366C90] hover:underline underline-offset-4 decoration-2 decoration-[#366C90] transition-all"
+                >Todos</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
 
       <a href="">
-        <img class="w-12 sm:w-16" src="../assets/logo-ikin.png" alt="logo itim" />
+        <img
+          class="w-12 sm:w-16"
+          src="../assets/logo-ikin.png"
+          alt="logo itim"
+        />
       </a>
 
       <div>
@@ -131,7 +164,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      menuNav: false,
+    };
+  },
+};
 </script>
 
 <style></style>
